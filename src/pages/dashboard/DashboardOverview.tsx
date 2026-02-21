@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BarChart3, CreditCard, Key, Activity, Loader2, Mail, CheckCircle, XCircle, AlertTriangle } from "lucide-react";
+import { Mail, CheckCircle, AlertTriangle, Key, Loader2 } from "lucide-react";
 import MetricCard from "@/components/dashboard/MetricCard";
 import CreditBalanceCard from "@/components/dashboard/CreditBalanceCard";
 import BulkUploadCard from "@/components/dashboard/BulkUploadCard";
@@ -38,12 +38,11 @@ const DashboardOverview = () => {
 
       const errors = logs.filter(l => l.status_code && l.status_code >= 400).length;
       setSuccessRate(logs.length > 0 ? (((logs.length - errors) / logs.length) * 100).toFixed(1) : "100");
-      // Risk % is a mock for now
       setRiskPercent(logs.length > 0 ? "12.4" : "0");
 
       const dayMap: Record<string, number> = {};
       logs.forEach((l) => {
-        const day = new Date(l.created_at).toLocaleDateString("pt-BR", { day: "2-digit" });
+        const day = new Date(l.created_at).toLocaleDateString("en-US", { day: "2-digit" });
         dayMap[day] = (dayMap[day] || 0) + 1;
       });
       setChartData(Object.entries(dayMap).map(([day, calls]) => ({ day, calls })).reverse());
@@ -56,10 +55,10 @@ const DashboardOverview = () => {
   const timeAgo = (d: string) => {
     const diff = Date.now() - new Date(d).getTime();
     const mins = Math.floor(diff / 60000);
-    if (mins < 60) return `${mins} min atrás`;
+    if (mins < 60) return `${mins} min ago`;
     const hrs = Math.floor(mins / 60);
-    if (hrs < 24) return `${hrs}h atrás`;
-    return `${Math.floor(hrs / 24)}d atrás`;
+    if (hrs < 24) return `${hrs}h ago`;
+    return `${Math.floor(hrs / 24)}d ago`;
   };
 
   if (loading) {
@@ -73,16 +72,16 @@ const DashboardOverview = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold mb-1">Dashboard</h1>
-        <p className="text-sm text-muted-foreground">Visão geral do Gold Mail Validator.</p>
+        <h1 className="text-2xl font-bold mb-1">Email Validation Dashboard</h1>
+        <p className="text-sm text-muted-foreground">Monitor your GoldMail AI email validation activity and usage.</p>
       </div>
 
       {/* Animated Metric Cards */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <MetricCard title="Emails Validados" value={totalCalls.toLocaleString()} change="" trend="up" icon={Mail} delay={0} />
-        <MetricCard title="Taxa de Sucesso" value={`${successRate}%`} change="" trend="up" icon={CheckCircle} delay={0.05} />
-        <MetricCard title="Risco Detectado" value={`${riskPercent}%`} change="" trend="down" icon={AlertTriangle} delay={0.1} />
-        <MetricCard title="API Keys Ativas" value={activeKeys.toString()} change="" trend="up" icon={Key} delay={0.15} />
+        <MetricCard title="Emails Validated" value={totalCalls.toLocaleString()} change="" trend="up" icon={Mail} delay={0} />
+        <MetricCard title="Validation Success Rate" value={`${successRate}%`} change="" trend="up" icon={CheckCircle} delay={0.05} />
+        <MetricCard title="High-Risk Emails" value={`${riskPercent}%`} change="" trend="down" icon={AlertTriangle} delay={0.1} />
+        <MetricCard title="Active API Keys" value={activeKeys.toString()} change="" trend="up" icon={Key} delay={0.15} />
       </div>
 
       {/* Credit Balance + Bulk Upload */}
@@ -99,9 +98,9 @@ const DashboardOverview = () => {
           transition={{ delay: 0.25 }}
           className="lg:col-span-2 bg-gradient-card rounded-xl border border-border/50 p-5"
         >
-          <h3 className="font-semibold mb-4">Consumo de API — Últimos 30 dias</h3>
+          <h3 className="font-semibold mb-4">API Usage — Last 30 Days</h3>
           {chartData.length === 0 ? (
-            <p className="text-sm text-muted-foreground py-16 text-center">Nenhum dado de uso ainda.</p>
+            <p className="text-sm text-muted-foreground py-16 text-center">No usage data yet.</p>
           ) : (
             <ResponsiveContainer width="100%" height={260}>
               <AreaChart data={chartData}>
@@ -127,9 +126,9 @@ const DashboardOverview = () => {
           transition={{ delay: 0.3 }}
           className="bg-gradient-card rounded-xl border border-border/50 p-5"
         >
-          <h3 className="font-semibold mb-4">Atividade Recente</h3>
+          <h3 className="font-semibold mb-4">Recent Activity</h3>
           {recentLogs.length === 0 ? (
-            <p className="text-sm text-muted-foreground text-center py-8">Nenhuma atividade ainda.</p>
+            <p className="text-sm text-muted-foreground text-center py-8">No activity yet.</p>
           ) : (
             <div className="space-y-4">
               {recentLogs.map((a, i) => (

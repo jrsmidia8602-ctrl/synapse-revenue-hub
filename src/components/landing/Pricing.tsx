@@ -11,11 +11,11 @@ const plans = [
     credits: "15,000 credits included",
     overage: "$5 / 1,000 extra credits",
     features: [
-      { label: "Access to Validate", included: true },
-      { label: "Basic API Access", included: true },
-      { label: "Email Support", included: true },
-      { label: "Webhook Access", included: false },
+      { label: "Email Validation API", included: true },
+      { label: "Basic Support", included: true },
+      { label: "Webhook Access", included: true },
       { label: "Advanced Analytics", included: false },
+      { label: "Priority SLA", included: false },
     ],
     highlighted: false,
   },
@@ -26,11 +26,11 @@ const plans = [
     credits: "75,000 credits included",
     overage: "$4 / 1,000 extra credits",
     features: [
-      { label: "Validate + Automate", included: true },
-      { label: "Priority API Access", included: true },
-      { label: "Webhook Access", included: true },
+      { label: "Email Validation API", included: true },
       { label: "Priority Support", included: true },
-      { label: "Advanced Analytics", included: false },
+      { label: "Webhook Access", included: true },
+      { label: "Advanced Analytics", included: true },
+      { label: "Custom Rate Limits", included: false },
     ],
     highlighted: true,
   },
@@ -41,10 +41,10 @@ const plans = [
     credits: "250,000 credits included",
     overage: "$3 / 1,000 extra credits",
     features: [
-      { label: "All Modules Access", included: true },
+      { label: "Email Validation API", included: true },
+      { label: "Priority Support", included: true },
       { label: "Advanced Analytics", included: true },
-      { label: "Dedicated Rate Limits", included: true },
-      { label: "Priority SLA", included: true },
+      { label: "Priority SLA (99.9%)", included: true },
       { label: "Custom Integrations", included: true },
     ],
     highlighted: false,
@@ -61,9 +61,9 @@ const Pricing = () => {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Flexible Plans for Every Stage</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Plans for Every Business Stage</h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Start with what you need and scale as your operations grow. All plans include credit-based usage.
+            Start with what you need and scale as your business grows. All plans include credit-based usage with transparent pricing.
           </p>
         </motion.div>
 
@@ -126,13 +126,13 @@ const Pricing = () => {
           viewport={{ once: true }}
           className="mt-10 max-w-4xl mx-auto rounded-xl border border-border/50 bg-gradient-card p-7 text-center"
         >
-          <h3 className="font-semibold text-lg mb-2">Enterprise</h3>
+          <h3 className="font-semibold text-lg mb-2">Enterprise Plans</h3>
           <p className="text-sm text-muted-foreground mb-4">
-            Dedicated infrastructure, custom SLA, multi-region deployment, and an account manager.
+            Dedicated infrastructure, custom SLA, multi-region deployment, and dedicated account management.
           </p>
-          <Link to="/enterprise">
+          <a href="mailto:sales@goldmail.ai">
             <Button variant="outline">Contact Sales</Button>
-          </Link>
+          </a>
         </motion.div>
       </div>
     </section>

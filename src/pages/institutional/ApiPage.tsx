@@ -1,3 +1,13 @@
-import InstitutionalPage from "./InstitutionalPage";
-const ApiPage = () => <InstitutionalPage category="Product" title="API" headline="Developer-First Email Intelligence API" content={["The Gold Mail Validator API provides secure and high-performance email validation endpoints.","Built with RESTful architecture, the API supports synchronous and asynchronous validation.","Developers can integrate validation into CRMs, SaaS platforms, signup flows, and marketing automation tools.","Authentication is handled via secure API keys with configurable rate limits and usage monitoring."]} />;
-export default ApiPage;
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+export default function ApiPage() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Redirect to API docs
+    navigate("/docs", { replace: true });
+  }, [navigate]);
+
+  return null;
+}

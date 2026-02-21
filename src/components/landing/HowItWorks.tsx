@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Upload, Cpu, BarChart3, ArrowRight } from "lucide-react";
+import { Upload, Zap, BarChart3, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -7,20 +7,20 @@ const steps = [
   {
     icon: Upload,
     step: "01",
-    title: "Envie seus emails",
-    desc: "Via API, upload de CSV ou integração direta. Suporte a listas de até 50.000 emails por job.",
+    title: "Submit Emails",
+    desc: "Via REST API, SDK integration, or direct CSV upload. Process up to 50,000 emails per batch with real-time or async validation.",
   },
   {
-    icon: Cpu,
+    icon: Zap,
     step: "02",
-    title: "Processamento inteligente",
-    desc: "Nosso motor valida sintaxe, MX, SMTP, detecta descartáveis e calcula score de confiança automaticamente.",
+    title: "Intelligent Processing",
+    desc: "Our engine validates syntax, MX records, SMTP connectivity, detects catch-all addresses, and calculates deliverability scores automatically.",
   },
   {
     icon: BarChart3,
     step: "03",
-    title: "Resultados segmentados",
-    desc: "Receba relatórios com categorização: válidos, inválidos, catch-all, arriscados. Exporte ou integre via webhook.",
+    title: "Get Results & Insights",
+    desc: "Receive segmented reports: valid, invalid, risky, catch-all. Export as CSV, integrate via webhook, or access via dashboard.",
   },
 ];
 
@@ -35,10 +35,10 @@ const HowItWorks = () => {
           className="text-center mb-14"
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Como funciona — em 3 passos
+            How GoldMail Works — 3 Simple Steps
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Da integração ao resultado, em menos de 2 minutos.
+            From integration to results, deploy in under 2 minutes.
           </p>
         </motion.div>
 
@@ -75,7 +75,7 @@ const HowItWorks = () => {
         >
           <Link to="/auth">
             <Button size="lg" className="h-12 px-8 font-semibold shadow-glow gap-2">
-              Começar agora — é grátis
+              Start Your Free Trial
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>

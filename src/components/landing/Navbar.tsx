@@ -8,14 +8,13 @@ const Navbar = () => {
       <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2.5">
           <XpexLogo className="w-7 h-7" />
-          <span className="font-display font-bold text-base tracking-tight">XPEX</span>
+          <span className="font-display font-bold text-base tracking-tight">GoldMail AI</span>
         </Link>
         <div className="hidden lg:flex items-center gap-7 text-sm text-muted-foreground">
-          <a href="/#modules" className="hover:text-foreground transition-colors">Modules</a>
+          <Link to="/sandbox" className="hover:text-foreground transition-colors">Sandbox</Link>
           <Link to="/docs" className="hover:text-foreground transition-colors">API</Link>
-          <a href="/#security" className="hover:text-foreground transition-colors">Security</a>
+          <Link to="/security" className="hover:text-foreground transition-colors">Security</Link>
           <a href="/#pricing" className="hover:text-foreground transition-colors">Pricing</a>
-          <a href="/#company" className="hover:text-foreground transition-colors">Company</a>
         </div>
         <div className="flex items-center gap-3">
           <Link to="/auth">
